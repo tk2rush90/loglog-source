@@ -342,3 +342,14 @@
     @content;
   }
 }
+
+@mixin page-transitions($selector1, $selector2) {
+  #{$selector1} + #{$selector1},
+  #{$selector1} + #{$selector2},
+  #{$selector2} + #{$selector1},
+  #{$selector2} + #{$selector2} {
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
+}

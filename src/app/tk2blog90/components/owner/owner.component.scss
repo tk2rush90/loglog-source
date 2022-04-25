@@ -1,0 +1,41 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include flex(center, null, column);
+  text-align: center;
+}
+
+// thumbnail image
+.thumbnail {
+  @include ball(150px);
+  overflow: hidden;
+
+  img {
+    @include box(100%);
+    object-fit: cover;
+  }
+}
+
+// owner name
+.name {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+// description
+.description {
+  margin-top: 10px;
+}
+
+// links
+.links {
+  @include flex(center);
+  margin-top: 20px;
+
+  // anchor + anchor
+  a + a {
+    margin-left: 10px;
+  }
+}

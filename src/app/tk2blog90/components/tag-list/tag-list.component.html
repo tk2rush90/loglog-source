@@ -1,0 +1,26 @@
+<!-- label -->
+<div
+  *ngIf="label"
+  class="label grey-text">
+  {{label}}
+</div>
+
+<!-- tags container -->
+<div class="tags">
+  <!-- render tags -->
+  <a
+    (click)="toggleTag(tag)"
+    *ngFor="let tag of tags"
+    [routerLink]="['/blog/tags']"
+    rippleColor="white"
+    appRipple>
+    {{tag}}
+  </a>
+
+  <!-- empty -->
+  <ng-container *ngIf="empty">
+    <div class="grey-text empty">
+      No tags to show.
+    </div>
+  </ng-container>
+</div>

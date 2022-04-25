@@ -1,0 +1,20 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  display: block;
+  user-select: none;
+}
+
+// input
+input {
+  width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+
+// post list
+app-post-list {
+  margin-top: 50px;
+}

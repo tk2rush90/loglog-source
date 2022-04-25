@@ -1,0 +1,11 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  display: block;
+}
+
+app-tag-list + app-tag-list, app-post-list {
+  margin-top: 50px;
+}

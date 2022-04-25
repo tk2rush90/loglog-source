@@ -1,0 +1,46 @@
+<!-- main container -->
+<main>
+  <!-- title -->
+  <h1>
+    LOGLOG
+  </h1>
+
+  <!-- descriptions -->
+  <div class="descriptions">
+    <p>
+      The page is not found.
+    </p>
+
+    <p>
+      Move to homepage by clicking following button.
+    </p>
+  </div>
+
+  <!-- links -->
+  <div class="links">
+    <!-- main -->
+    <a
+      [routerLink]="['/']"
+      appFlatButton>
+      <p>main</p>
+
+      <app-icon
+        class="black-icon"
+        name="chevron-right:night-rider"></app-icon>
+    </a>
+
+    <!-- blog home -->
+    <a
+      [routerLink]="['/blog']"
+      appFlatButton>
+      <p>blog home</p>
+
+      <app-icon
+        class="black-icon"
+        name="chevron-right:night-rider"></app-icon>
+    </a>
+  </div>
+</main>
+
+<!-- copyrights -->
+<app-copyrights></app-copyrights>

@@ -1,0 +1,35 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  display: block;
+  user-select: none;
+  height: 150px;
+}
+
+// inner container
+.container {
+  @include flex(center, space-between);
+  max-width: 1000px;
+  width: calc(100% - 20px);
+  height: 100%;
+  margin: 0 auto;
+}
+
+// title
+.title {
+  font-weight: 900;
+  font-size: 30px;
+  color: $summer-sky;
+}
+
+// buttons
+.buttons {
+  @include flex(center);
+}
+
+// search link
+.search {
+  margin-left: 10px;
+}

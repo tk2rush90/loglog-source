@@ -1,0 +1,81 @@
+<!-- main container -->
+<main>
+  <!-- title -->
+  <h1>
+    LOGLOG
+  </h1>
+
+  <!-- descriptions -->
+  <div class="descriptions">
+    <p>
+      A full-stack developer’s personal space with Github Pages
+    </p>
+
+    <p>
+      This site is made with Angular2+
+    </p>
+  </div>
+
+  <!-- links -->
+  <div class="links">
+    <!-- blog -->
+    <a
+      [routerLink]="['/blog']"
+      appFlatButton>
+      <p>blog</p>
+
+      <app-icon
+        class="black-icon"
+        name="chevron-right:night-rider"></app-icon>
+    </a>
+
+    <!-- github -->
+    <a
+      href="https://github.com/tk2rush90"
+      appOuterLink
+      appFlatButton>
+      <div>
+        <p>
+          github
+        </p>
+
+        <app-icon
+          class="black-icon"
+          name="github:night-rider"></app-icon>
+      </div>
+
+      <app-icon
+        class="black-icon"
+        name="chevron-right:night-rider"></app-icon>
+    </a>
+
+    <!-- topcoder -->
+    <a
+      href="https://www.topcoder.com/members/tk2rush90"
+      appOuterLink
+      appFlatButton>
+      <div>
+        <p>
+          topcoder
+        </p>
+
+        <app-icon
+          class="black-icon"
+          name="topcoder:night-rider"></app-icon>
+      </div>
+
+      <app-icon
+        class="black-icon"
+        name="chevron-right:night-rider"></app-icon>
+    </a>
+  </div>
+
+  <!-- bottom container -->
+  <div class="bottom">
+    <!-- theme button -->
+    <app-theme-button></app-theme-button>
+  </div>
+</main>
+
+<!-- copyrights -->
+<app-copyrights></app-copyrights>

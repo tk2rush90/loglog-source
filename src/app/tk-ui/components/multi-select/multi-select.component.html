@@ -24,34 +24,10 @@
   </div>
 </div>
 
-<!-- options container -->
-<div
-  (autoClose)="close()"
+<!-- options -->
+<app-select-options
+  (optionSelected)="onOptionClicked($event)"
   *ngIf="opened"
-  [positionContainer]="elementRef.nativeElement"
-  [closerContainer]="elementRef.nativeElement"
-  [closerButton]="button"
-  appAutoCloser
-  appAutoPositioner
-  appAutoScrollContainer
-  class="tk-options-container"
-  horizontalBindPosition="inside"
-  horizontalPriority="left"
-  verticalBindPosition="outside"
-  verticalPriority="bottom">
-  <!-- render option item -->
-  <div
-    (click)="onOptionClicked(item)"
-    (mouseenter)="resetFocusedIndex()"
-    *ngFor="let item of options; let index = index"
-    [class.tk-focused]="index === focusedIndex"
-    [class.tk-selected]="isValueSelected(item.value)"
-    [focused]="index === focusedIndex"
-    appAutoScrollItem
-    class="tk-option">
-    <!-- option label -->
-    <div class="tk-option-label">
-      {{item.label}}
-    </div>
-  </div>
-</div>
+  [options]="options"
+  [selectContainer]="button"
+  [value]="value"></app-select-options>

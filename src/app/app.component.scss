@@ -1,0 +1,29 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include box(100%);
+  position: absolute;
+  display: block;
+  font-family: 'Montserrat', 'Gothic A1', sans-serif;
+  font-size: 14px;
+
+  &.theme-light {
+    background-color: $white;
+    color: $night-rider;
+  }
+
+  &.theme-dark {
+    background-color: $night-rider;
+    color: $white;
+  }
+}
+
+:host {
+  ::ng-deep {
+    @include page-transitions(app-home, app-blog);
+    @include page-transitions(app-home, app-not-found);
+    @include page-transitions(app-blog, app-not-found);
+  }
+}

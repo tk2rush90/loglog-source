@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, HostBinding, Input, OnInit, Renderer2} from '@angular/core';
 import {IconDefinitions} from '@tk-ui/components/icon/icon-defs';
+import {PlatformService} from '@tk-ui/services/universal/platform.service';
 
 @Component({
   selector: 'app-icon',
@@ -34,6 +35,7 @@ export class IconComponent implements OnInit, AfterViewInit {
   private _icon: SVGElement | undefined;
 
   constructor(
+    private platformService: PlatformService,
     private renderer: Renderer2,
     private elementRef: ElementRef<HTMLElement>,
   ) { }
@@ -49,9 +51,11 @@ export class IconComponent implements OnInit, AfterViewInit {
    * set icon with name
    */
   private _setIcon(): void {
-    this._removeExistingIcon();
-    this._parseSvgIcon();
-    this._appendSvgToView();
+    if (this.platformService.isBrowser) {
+      this._removeExistingIcon();
+      this._parseSvgIcon();
+      this._appendSvgToView();
+    }
   }
 
   /**

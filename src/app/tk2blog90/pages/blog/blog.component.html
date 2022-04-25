@@ -1,0 +1,17 @@
+<!-- header -->
+<app-header></app-header>
+
+<!-- scroll header -->
+<app-header
+  [class.scrolled]="scrolled"
+  class="scrollable"></app-header>
+
+<!-- main container -->
+<main
+  [class.scrolled]="scrolled">
+  <!-- router container -->
+  <div class="container">
+    <!-- router outlet -->
+    <router-outlet></router-outlet>
+  </div>
+</main>

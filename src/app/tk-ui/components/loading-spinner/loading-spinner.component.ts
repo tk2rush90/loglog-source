@@ -24,22 +24,18 @@ export class LoadingSpinnerComponent implements OnInit, OnDestroy {
   /**
    * Duration of each circle.
    */
-  @Input() circleDuration = 1000;
+  @Input() circleDuration = 500;
 
   /**
    * Duration for fadeout.
    */
-  @Input() fadingDuration = 500;
+  @Input() fadingDuration = 150;
 
   /**
    * Colors to animate.
    */
   @Input() colors = [
-    '#0a40db',
-    '#3867ec',
-    '#9024e2',
-    '#212121',
-    '#7d7d7d',
+    '#41C2DE',
   ];
 
   /**

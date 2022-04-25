@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tk2blog90.github.dev.io": {
+    "tk2blog90": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tk2blog90.github.dev.io",
+            "outputPath": "dist/tk2blog90/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,12 +28,36 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets/data",
+              "src/assets/images",
+              "src/2022",
+              "src/sitemap.xml",
+              "src/rss.xml",
+              "src/robots.txt",
+              "src/404.html"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/tk-ui/styles",
+                "src/app/tk2blog90/styles"
+              ]
+            },
+            "scripts": [
+              "node_modules/marked/marked.min.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/prismjs/components/prism-scss.min.js",
+              "node_modules/prismjs/components/prism-javascript.min.js",
+              "node_modules/prismjs/components/prism-typescript.min.js",
+              "node_modules/prismjs/components/prism-bash.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "@octokit/app",
+              "@octokit/auth-app"
+            ]
           },
           "configurations": {
             "production": {
@@ -72,10 +96,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tk2blog90.github.dev.io:build:production"
+              "browserTarget": "tk2blog90:build:production"
             },
             "development": {
-              "browserTarget": "tk2blog90.github.dev.io:build:development"
+              "browserTarget": "tk2blog90:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +107,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tk2blog90.github.dev.io:build"
+            "browserTarget": "tk2blog90:build"
           }
         },
         "test": {
@@ -96,16 +120,88 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/2022"
             ],
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/tk-ui/styles",
+                "src/app/tk2blog90/styles"
+              ]
+            },
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/tk2blog90/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/tk-ui/styles",
+                "src/app/tk2blog90/styles"
+              ]
+            },
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "tk2blog90:build:development",
+              "serverTarget": "tk2blog90:server:development"
+            },
+            "production": {
+              "browserTarget": "tk2blog90:build:production",
+              "serverTarget": "tk2blog90:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tk2blog90:build:production",
+              "serverTarget": "tk2blog90:server:production"
+            },
+            "development": {
+              "browserTarget": "tk2blog90:build:development",
+              "serverTarget": "tk2blog90:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
   },
-  "defaultProject": "tk2blog90.github.dev.io"
+  "defaultProject": "tk2blog90"
 }

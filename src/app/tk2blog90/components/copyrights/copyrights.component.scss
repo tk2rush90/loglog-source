@@ -1,0 +1,10 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include flex(center, center);
+  height: 55px;
+  text-align: center;
+  font-size: 12px;
+}

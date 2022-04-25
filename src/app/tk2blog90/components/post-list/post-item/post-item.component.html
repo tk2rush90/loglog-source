@@ -1,0 +1,20 @@
+<!-- anchor -->
+<a [routerLink]="['/blog/post', post.id]">
+  <!-- date -->
+  <div class="date grey-text">
+    {{post.created | date: 'dd MMMM, yyyy'}}
+  </div>
+
+  <!-- thumbnail -->
+  <div class="thumbnail image-placeholder">
+    <img
+      *ngIf="post.thumbnail"
+      [src]="post.thumbnail"
+      [alt]="post.title"/>
+  </div>
+
+  <!-- title -->
+  <div class="title">
+    {{post.title}}
+  </div>
+</a>

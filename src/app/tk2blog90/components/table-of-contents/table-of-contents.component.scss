@@ -1,0 +1,48 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include padding(20px);
+  @include flex(flex-start, null, column);
+
+  &.light {
+    background-color: $night-rider-05;
+
+    a {
+      span {
+        color: $night-rider-30;
+      }
+    }
+  }
+
+  &.dark {
+    background-color: $white-05;
+
+    a {
+      span {
+        color: $white-30;
+      }
+    }
+  }
+}
+
+a {
+  display: block;
+  font-size: 12px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @for $i from 1 through 6 {
+    &.indent-#{$i} {
+      @include padding-left(#{($i - 1) * 10}px);
+    }
+  }
+}
+
+// heading + heading
+a + a {
+  margin-top: 10px;
+}

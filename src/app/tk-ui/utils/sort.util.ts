@@ -1,6 +1,8 @@
 import {ObjectUtil} from '@tk-ui/utils/object.util';
 
-// sort order
+/**
+ * Sort order.
+ */
 export type SortOrder = 'asc' | 'desc';
 
 /**

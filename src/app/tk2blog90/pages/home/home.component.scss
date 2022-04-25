@@ -1,0 +1,95 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include box(100%);
+  display: block;
+  overflow: auto;
+  user-select: none;
+}
+
+main {
+  @include padding-top(150px);
+  // reduce copyrights height and margin
+  min-height: calc(100% - 55px - 50px);
+}
+
+// title
+h1 {
+  text-align: center;
+  margin: 0 auto;
+  color: $summer-sky;
+  font-weight: 900;
+
+  @media screen and (min-width: 1001px) {
+    font-size: 200px;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1000px) {
+    font-size: 150px;
+  }
+
+  @media screen and (min-width: 541px) and (max-width: 768px) {
+    font-size: 100px;
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 540px) {
+    font-size: 60px;
+  }
+}
+
+// descriptions
+.descriptions {
+  margin-top: 50px;
+
+  // description
+  p {
+    margin: 0 auto;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  // description + description
+  p + p {
+    margin-top: 10px;
+  }
+}
+
+// links
+.links {
+  margin: 50px auto 0;
+  max-width: 370px;
+  width: calc(100% - 20px);
+
+  // anchor
+  a {
+    @include rect(100%, 60px);
+    @include flex(center, space-between);
+    @include padding(0 20px);
+
+    div {
+      @include flex(center);
+    }
+
+    p + app-icon {
+      margin-left: 10px;
+    }
+  }
+
+  // anchor + anchor
+  a + a {
+    margin-top: 10px;
+  }
+}
+
+// bottom container for theme button
+.bottom {
+  @include flex(center, center);
+  margin-top: 50px;
+}
+
+// copyrights
+app-copyrights {
+  margin-top: 50px;
+}

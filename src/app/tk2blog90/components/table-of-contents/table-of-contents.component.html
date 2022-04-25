@@ -1,0 +1,9 @@
+<!-- render anchors -->
+<a
+  (click)="emitLinkClick(heading)"
+  *ngFor="let heading of headings"
+  [routerLink]="['/blog/post', id]"
+  [fragment]="heading.id"
+  [class]="getAnchorClass(heading)">
+  <span>#</span> {{heading.text}}
+</a>

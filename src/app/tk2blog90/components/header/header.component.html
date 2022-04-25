@@ -1,0 +1,27 @@
+<!-- inner container -->
+<div class="container">
+  <!-- title link -->
+  <a
+    [routerLink]="['/blog']"
+    class="title">
+    LOGLOG
+  </a>
+
+  <!-- buttons -->
+  <div class="buttons">
+    <!-- theme button -->
+    <app-theme-button></app-theme-button>
+
+    <!-- search link -->
+    <a
+      [bound]="false"
+      [centered]="true"
+      [routerLink]="['/blog/search']"
+      appRipple
+      class="search">
+      <app-icon
+        class="grey-icon"
+        name="search:black-30"></app-icon>
+    </a>
+  </div>
+</div>

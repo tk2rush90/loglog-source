@@ -30,8 +30,22 @@
 // flat button
 .tk-flat-button {
   @include flex(center, center);
-  @include padding(0 20px);
+  position: relative;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: background-color .1s;
+}
 
-  // for grey color
-  @include flat-button('default', $black, #E1E1E1, darken(#E1E1E1, 5%), darken(#E1E1E1, 10%));
+// light theme
+.theme-light {
+  .tk-flat-button {
+    @include flat-button('default', $night-rider, $night-rider-05, $night-rider-10, $night-rider-10);
+  }
+}
+
+// dark theme
+.theme-dark {
+  .tk-flat-button {
+    @include flat-button('default', $white, $white-30, $white-50, $white-50);
+  }
 }

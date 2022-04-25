@@ -1,0 +1,138 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  position: relative;
+  display: block;
+}
+
+// inner container
+.container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+// post metadata
+.meta {
+  @include flex(center, null, column);
+  text-align: center;
+}
+
+// title
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+// description
+.description {
+  margin-top: 10px;
+}
+
+// banner
+.banner {
+  @include rect(100%, 350px);
+  overflow: hidden;
+  margin-top: 50px;
+
+  img {
+    @include box(100%);
+    object-fit: cover;
+  }
+}
+
+// banner credit
+.credit {
+  @include flex(center, center);
+  height: 40px;
+  font-size: 12px;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+// post contents
+.contents {
+  position: relative;
+  margin-top: 50px;
+
+  .container {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 841px) {
+    @include flex(flex-start);
+  }
+
+  @media screen and (max-width: 840px) {
+    @include flex(center, null, column-reverse);
+  }
+}
+
+// left actions
+.actions {
+  @include padding(20px 0);
+  position: sticky;
+  top: 50px;
+
+  @media screen and (min-width: 841px) {
+    @include flex(center, null, column);
+    width: 200px;
+  }
+
+  @media screen and (max-width: 840px) {
+    @include flex(center, center);
+    width: 100%;
+  }
+}
+
+// action button
+.action {
+  @include flex(center, null, column);
+  text-align: center;
+  font-size: 11px;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase;
+
+  span {
+    margin-top: 5px;
+
+    @media screen and (max-width: 840px) {
+      display: none;
+    }
+  }
+}
+
+// action + action
+.action + .action {
+  @media screen and (min-width: 841px) {
+    margin-top: 20px;
+  }
+
+  @media screen and (max-width: 840px) {
+    margin-left: 20px;
+  }
+}
+
+// article
+article {
+  line-height: 1.8em;
+  user-select: auto;
+}
+
+// tag list and copyrights
+app-tag-list, app-copyrights {
+  margin-top: 50px;
+}
+
+// loading spinner
+app-loading-spinner {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}

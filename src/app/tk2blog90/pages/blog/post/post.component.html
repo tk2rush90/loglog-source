@@ -1,0 +1,103 @@
+<!-- metadata -->
+<div class="meta container">
+  <!-- date -->
+  <div class="grey-text">
+    {{post?.created | date: 'dd MMMM, yyyy'}}
+  </div>
+
+  <!-- title -->
+  <h1 class="title">
+    {{post?.title}}
+  </h1>
+
+  <!-- description -->
+  <div class="grey-text description">
+    {{post?.description}}
+  </div>
+</div>
+
+<!-- banner -->
+<div class="banner image-placeholder">
+  <img
+    *ngIf="post?.banner"
+    [src]="post?.banner"
+    [alt]="post?.title"/>
+</div>
+
+<!-- banner credit for unsplash -->
+<div
+  *ngIf="post?.bannerCredit"
+  class="credit">
+  <div class="grey-text">
+    Photo by
+    <a
+      [href]="creditLink"
+      appOuterLink>{{creditName}}</a>
+    on
+    <a
+      href="https://unsplash.com"
+      appOuterLink>Unsplash</a>.
+  </div>
+</div>
+
+<!-- contents -->
+<div class="contents">
+  <!-- actions -->
+  <div class="actions">
+    <!-- twitter -->
+    <a
+      [href]="tweetUrl"
+      class="action"
+      appOuterLink>
+      <app-icon
+        class="grey-icon"
+        name="twitter:black-30"></app-icon>
+
+      <span class="grey-text">twitter</span>
+    </a>
+
+    <!-- share -->
+    <div
+      (click)="copyPostLink()"
+      class="action">
+      <app-icon
+        class="grey-icon"
+        name="share:black-30"></app-icon>
+
+      <span class="grey-text">share</span>
+    </div>
+
+    <!-- buy me a coffee -->
+    <a
+      href="https://www.buymeacoffee.com/tk2rush90"
+      class="action"
+      appOuterLink>
+      <app-icon
+        class="grey-icon"
+        name="buy-me-a-coffee:black-30"></app-icon>
+
+      <span class="grey-text">buy me a coffee</span>
+    </a>
+  </div>
+
+  <!-- article -->
+  <article class="container">
+    <!-- table of contents -->
+    <app-table-of-contents
+      (linkClick)="scrollToFragment($event)"
+      *ngIf="post?.contents"
+      [target]="target.element.nativeElement"></app-table-of-contents>
+
+    <!-- show markdown -->
+    <markdown
+      #target
+      [data]="post?.contents"></markdown>
+
+    <!-- tag list -->
+    <app-tag-list
+      [tags]="post?.tags || []"></app-tag-list>
+  </article>
+</div>
+
+<!-- copyrights -->
+<app-copyrights></app-copyrights>

@@ -21,7 +21,15 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@tk-ui/*": [
+        "src/app/tk-ui/*"
+      ],
+      "@tk2blog90/*": [
+        "src/app/tk2blog90/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

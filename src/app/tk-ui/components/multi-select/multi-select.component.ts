@@ -15,47 +15,30 @@ export class MultiSelectComponent<T> extends SelectBaseComponent<T> implements O
   /**
    * selected values
    */
-  value: T[] = [];
+  override value: T[] = [];
 
   /**
    * override default value
    */
-  protected _defaultValue: T[] = [];
+  protected override _defaultValue: T[] = [];
 
   constructor(
-    @Self() @Optional() public ngControl: NgControl,
-    public elementRef: ElementRef<HTMLElement>,
-    protected changeDetectorRef: ChangeDetectorRef,
+    @Self() @Optional() public override ngControl: NgControl,
+    public override elementRef: ElementRef<HTMLElement>,
+    protected override changeDetectorRef: ChangeDetectorRef,
   ) {
     super(ngControl, elementRef, changeDetectorRef);
   }
 
-  ngOnInit(): void {
-  }
-
-  /**
-   * override `open()` method
-   * do not set `focusedIndex` when opened
-   */
-  open(): void {
-    this.opened = true;
-    this._setFocusedIndex();
-    this._addKeyboardControlEvents();
-  }
-
-  /**
-   * set `focusedIndex` with last value
-   */
-  private _setFocusedIndex(): void {
-    const last = [...this.value].pop();
-    this.focusedIndex = this._options.findIndex(item => item.value === last);
+  override ngOnInit(): void {
+    super.ngOnInit();
   }
 
   /**
    * override `writeValue()` method
    * @param value value to write
    */
-  writeValue(value: any): void {
+  override writeValue(value: any): void {
     super.writeValue(value || []);
   }
 
@@ -90,7 +73,7 @@ export class MultiSelectComponent<T> extends SelectBaseComponent<T> implements O
   /**
    * override `_setSelectedLabel()` method
    */
-  protected _setSelectedLabel(): void {
+  protected override _setSelectedLabel(): void {
     const options = this._options.filter(item => this.value.indexOf(item.value) !== -1);
 
     if (options.length > 0) {

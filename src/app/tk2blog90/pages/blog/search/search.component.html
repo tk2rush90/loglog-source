@@ -1,0 +1,12 @@
+<!-- search input -->
+<input
+  [@fade-in]="fadeIn"
+  (ngModelChange)="onSearchChange($event)"
+  [ngModel]="search"
+  appInput
+  placeholder="Search..."/>
+
+<!-- resulted post -->
+<app-post-list
+  [posts]="posts"
+  [loading]="loading"></app-post-list>

@@ -1,0 +1,52 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include box(100%);
+  display: block;
+  overflow: auto;
+}
+
+// main container
+main {
+  max-width: 1000px;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+}
+
+// header
+app-header {
+  z-index: 100;
+
+  &.scrollable {
+    position: sticky;
+    top: 0;
+    height: 50px;
+    opacity: 0;
+    transition: opacity .1s;
+    box-shadow: 0 3px 6px $black-30;
+    pointer-events: none;
+
+    &.scrolled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+// router container
+.container {
+  position: relative;
+}
+
+:host {
+  ::ng-deep {
+    @include page-transitions(app-list, app-post);
+    @include page-transitions(app-list, app-search);
+    @include page-transitions(app-list, app-tags);
+    @include page-transitions(app-post, app-search);
+    @include page-transitions(app-post, app-tags);
+    @include page-transitions(app-search, app-tags);
+  }
+}

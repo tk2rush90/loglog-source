@@ -1,0 +1,42 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  display: block;
+}
+
+// label + tags
+.label + .tags {
+  margin-top: 10px;
+}
+
+// tags container
+.tags {
+  @include flex();
+}
+
+// tag anchor
+a {
+  @include padding(0 10px);
+  @include border(1px solid transparent);
+  @include flex(center);
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: $summer-sky;
+  color: $white;
+  font-size: 12px;
+  height: 25px;
+  border-radius: 25px;
+
+  &:hover {
+    background-color: lighten($summer-sky, 10%);
+  }
+}
+
+// empty message
+.empty {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+}

@@ -1,0 +1,9 @@
+/
+/blog
+/blog/list
+/blog/search
+/blog/tags
+/404
+/blog/post/3
+/blog/post/2
+/blog/post/1

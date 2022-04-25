@@ -1,0 +1,105 @@
+@import "mixins";
+@import "props";
+
+
+// empty css for IDE auto completion.
+.grey-text {}
+.grey-icon {}
+.black-icon {}
+.image-placeholder {}
+
+// light theme
+.theme-light {
+  .grey-text {
+    color: $black-30;
+  }
+
+  .grey-icon {
+    svg {
+      path {
+        fill: $black;
+      }
+    }
+  }
+
+  .black-icon {
+    svg {
+      path {
+        fill: $night-rider;
+      }
+    }
+  }
+
+  app-copyrights {
+    color: $night-rider;
+  }
+
+  markdown {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &::before {
+        color: $night-rider-30;
+      }
+    }
+  }
+
+  .image-placeholder {
+    background-color: $night-rider-05;
+  }
+
+  app-header {
+    background-color: $white;
+  }
+}
+
+// dark theme
+.theme-dark {
+  .grey-text {
+    color: $white-30;
+  }
+
+  .grey-icon {
+    svg {
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  .black-icon {
+    svg {
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  app-copyrights {
+    color: $white;
+  }
+
+  markdown {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &::before {
+        color: $white-30;
+      }
+    }
+  }
+
+  .image-placeholder {
+    background-color: $white-05;
+  }
+
+  app-header {
+    background-color: $night-rider;
+  }
+}

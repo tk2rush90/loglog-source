@@ -1,0 +1,34 @@
+<ng-container *ngIf="!loading">
+  <div
+    [@fade-in-out]="fadeInOut"
+    [@show-up]="showUp"
+    *ngIf="hasPosts; else noResult"
+    class="list">
+    <!-- render post items -->
+    <app-post-item
+      *ngFor="let post of posts"
+      [post]="post"></app-post-item>
+  </div>
+
+  <ng-template #noResult>
+    <!-- no result -->
+    <div
+      [@fade-in-out]="fadeInOut"
+      [@show-up]="showUp"
+      class="no-result">
+      <!-- icon -->
+      <app-icon
+        class="grey-icon"
+        name="sentiment-very-dissatisfied:black-30"></app-icon>
+
+      <!-- message -->
+      <div class="grey-text message">
+        Oops! Nothing to show.
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+
+<app-loading-spinner
+  width="100%"
+  height="350px"></app-loading-spinner>
