@@ -49,7 +49,9 @@ export class ListComponent implements OnInit {
       description: `Mainly about programming, but it also talking about various topics such as music, travel, and games, etc.`,
     });
 
-    this.getPostList();
+    if (this.platformService.isBrowser) {
+      this.getPostList();
+    }
   }
 
   /**
