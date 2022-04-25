@@ -10,11 +10,12 @@
     "test": "ng test",
     "create-data": "node scripts/create-data.js",
     "publish": "node scripts/publish.js",
+    "deploy": "node ../tk2blog90.github.io/push.js",
     "dev:ssr": "ng run tk2blog90:serve-ssr",
     "serve:ssr": "node dist/tk2blog90/server/main.js",
     "build:ssr": "ng build && ng run tk2blog90:server",
     "prerender": "ng run tk2blog90:prerender --routes-file src/routes.txt",
-    "build:github": "npm run create-data && npm run prerender && npm run publish"
+    "build:github": "npm run create-data && npm run prerender && npm run publish && npm run deploy"
   },
   "private": true,
   "dependencies": {

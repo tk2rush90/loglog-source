@@ -24,26 +24,3 @@ contents.forEach(content => {
 
 // Copy original data to target directory.
 copyDirectory(originalDirectory, targetDirectory);
-
-/**
- * Run command asynchronously.
- * @param command {string} Command to run.
- * @returns {Promise<unknown>}
- */
-function runCommand(command) {
-  return new Promise((resolve, reject) => {
-    const process = exec(command);
-
-    process.on('error', (code, signal) => {
-      console.log(`command error: "${command}"`, code, signal);
-      reject();
-    });
-
-    process.on('exit', (code, signal) => {
-      console.log(`command exit: "${command}"`, code, signal);
-      resolve();
-    });
-  });
-}
-
-runCommand(`node ${path.join(targetDirectory, 'push.js')}`);
