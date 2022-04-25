@@ -1,27 +1,80 @@
-# Tk2blog90.Github.Dev.Io
+# LOGLOG Source code
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+This is the source code of [LOGLOG Blog](https://tk2blog90.github.io).
 
-## Development server
+This application is made with Angular and Angular Universal.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The repository of deployed codes is [here](https://github.com/tk2blog90/tk2blog90.github.io).
 
-## Code scaffolding
+# Commands
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+# Run application from local.
+ng serve -o
 
-## Build
+# Create API data, rss.xml, sitemap.xml with draft posts.
+npm run create-data
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Publish the build data to GitHub branch directory.
+# By default, the GitHub branch directory should be placed in same directory
+# with this project.
+# The name of GitHub branch directory should be `tk2blog90.github.io`.
+npm run publish
 
-## Running unit tests
+# Run push command in GitHub branch directory.
+npm run push
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Process creating data to pushing changes at once.
+npm run build:github
+```
 
-## Running end-to-end tests
+# How to create post
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+All the draft posts should be placed in `/assets/posts` directory.
 
-## Further help
+The name of subdirectory in `/assets/posts` is the `id` of each post.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Create a subdirectory to create a new post and create `meta.json` and `index.md` files in it.
+
+The `meta.json` file contains metadata for the post
+and `index.md` is a markdown file containing the contents of the post body.
+
+The structure of the `meta.json` file is as follows:
+
+```json
+{
+  "title": "string",
+  "description": "string",
+  "keywords": [
+    "string"
+  ],
+  "tags": [
+    "string"
+  ],
+  "banner": "string",
+  "thumbnail": "string",
+  "bannerCredit": {
+    "name": "string",
+    "id": "string"
+  },
+  "publish": "string"
+}
+```
+
+- `title`: Post title.
+- `description`: Post description. It is not for SEO. The description for SEO will be created by using post contents.
+- `keywords`: Post keywords for SEO.
+- `tags`: Post tags. Will be used for searching posts by tags.
+- `banner`: Post banner image. It is shown from post detail page.
+- `thubmnail`: Post thumbnail image. It is shown from post list page.
+- `bannerCredit`: The credit text for post banner. It is for [Unsplash](https://unsplash.com) images. The `name` is username of unsplash photographer and `id` is his/her user id.
+- `publish`: Post publish datetime. If it is not set, post created date will be created date of `index.md`.
+
+# Routes
+
+- `/`: Main page of LOGLOG.
+- `/blog/list`: Default post list page.
+- `/blog/search`: Keyword searched post list page.
+- `/blog/tags`: Tag searched post list page.
+- `/blog/post/:id`: Post detail page.
+- `/blog/draft/:id`: Draft post detail page. Only works for local environment.

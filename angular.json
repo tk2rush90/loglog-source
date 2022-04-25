@@ -52,7 +52,8 @@
               "node_modules/prismjs/components/prism-scss.min.js",
               "node_modules/prismjs/components/prism-javascript.min.js",
               "node_modules/prismjs/components/prism-typescript.min.js",
-              "node_modules/prismjs/components/prism-bash.min.js"
+              "node_modules/prismjs/components/prism-bash.min.js",
+              "node_modules/prismjs/components/prism-json.min.js"
             ],
             "allowedCommonJsDependencies": [
               "@octokit/app",
@@ -87,7 +88,18 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "assets": [
+                "src/favicon.ico",
+                "src/assets/data",
+                "src/assets/images",
+                "src/2022",
+                "src/sitemap.xml",
+                "src/rss.xml",
+                "src/robots.txt",
+                "src/404.html",
+                "src/assets/posts"
+              ]
             }
           },
           "defaultConfiguration": "production"

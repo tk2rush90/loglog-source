@@ -77,7 +77,7 @@
 .actions {
   @include padding(20px 0);
   position: sticky;
-  top: 50px;
+  top: 70px;
 
   @media screen and (min-width: 841px) {
     @include flex(center, null, column);
@@ -135,4 +135,10 @@ app-loading-spinner {
   position: absolute;
   width: 100%;
   top: 0;
+}
+
+app-table-of-contents {
+  &:not(.empty) + markdown {
+    margin-top: 2em;
+  }
 }

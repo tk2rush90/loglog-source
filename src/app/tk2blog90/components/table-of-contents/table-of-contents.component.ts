@@ -64,6 +64,13 @@ export class TableOfContentsComponent implements OnInit {
   }
 
   /**
+   * Bind empty class when there is no headings in post contents.
+   */
+  @HostBinding('class.empty') get empty(): boolean {
+    return this.headings.length === 0;
+  }
+
+  /**
    * Bind light theme class.
    */
   @HostBinding('class.light') get light(): boolean {

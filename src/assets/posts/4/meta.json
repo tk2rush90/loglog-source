@@ -1,0 +1,24 @@
+{
+  "title": "Solve \"Angular Universal doesn't wait for HTTP calls end\"",
+  "description": "It's mostly your fault",
+  "keywords": [
+    "Angular",
+    "Angular Universal",
+    "nguniversal",
+    "SEO",
+    "prerender"
+  ],
+  "tags": [
+    "Javascript",
+    "Typescript",
+    "Angular2+",
+    "SSR"
+  ],
+  "banner": "/assets/images/posts/4/banner.png",
+  "thumbnail": "/assets/images/posts/4/thumbnail.png",
+  "bannerCredit": {
+    "name": "Ilya Pavlov",
+    "id": "@ilyapavlov"
+  },
+  "publish": "2022-04-25 13:49:00"
+}

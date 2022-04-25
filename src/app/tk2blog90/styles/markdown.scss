@@ -2,6 +2,12 @@
 @import "props";
 
 markdown {
+  display: block;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
   * {
     user-select: auto;
   }
@@ -33,6 +39,7 @@ markdown {
     margin: 2em 0;
     font-weight: 600;
     word-break: break-word;
+    line-height: 1.8em;
 
     &::before {
       content: '#';
@@ -43,28 +50,14 @@ markdown {
     }
   }
 
-  h1 {
-    font-size: 26px;
-  }
+  @for $i from 1 through 6 {
+    h#{$i} {
+      font-size: #{26 - (($i - 1) * 2)}px;
 
-  h2 {
-    font-size: 24px;
-  }
-
-  h3 {
-    font-size: 22px;
-  }
-
-  h4 {
-    font-size: 20px;
-  }
-
-  h5 {
-    font-size: 18px;
-  }
-
-  h6 {
-    font-size: 16px;
+      code {
+        font-size: #{24 - (($i - 1) * 2)}px;
+      }
+    }
   }
 
   p {

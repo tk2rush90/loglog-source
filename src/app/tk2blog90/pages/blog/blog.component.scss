@@ -22,10 +22,10 @@ app-header {
   &.scrollable {
     position: sticky;
     top: 0;
-    height: 50px;
+    height: 70px;
     opacity: 0;
     transition: opacity .1s;
-    box-shadow: 0 3px 6px $black-30;
+    box-shadow: 0 3px 6px $black-20;
     pointer-events: none;
 
     &.scrolled {

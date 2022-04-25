@@ -46,7 +46,7 @@ export class DataApiService extends ApiBaseService {
    */
   getDraftPost(id: string): Observable<PostDetail> {
     return combineLatest([
-      this.http.get<PostMeta>(`/assets/posts/${id}/meta`),
+      this.http.get<PostMeta>(`/assets/posts/${id}/meta.json`),
       this.http.get(`/assets/posts/${id}/index.md`, {
         responseType: 'text',
       }),

@@ -119,7 +119,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
           // To show heading text correctly,
           // reduce the height of heading and height of application header height.
-          scrollableContainer.scrollTo(0, scrollableContainer.scrollTop + domRect.top - domRect.height - 50);
+          scrollableContainer.scrollTo(0, scrollableContainer.scrollTop + domRect.top - domRect.height - 70);
         } else {
           scrollableContainer.scrollTo(0, 0);
         }
