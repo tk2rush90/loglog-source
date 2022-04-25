@@ -1,0 +1,22 @@
+@import "mixins";
+@import "props";
+
+// set nothing
+:host {
+}
+
+// container
+.tk-container {
+  @include flex(center, center);
+}
+
+// svg
+svg {
+  display: block;
+}
+
+// circle
+circle {
+  fill: none;
+  stroke-linecap: round;
+}

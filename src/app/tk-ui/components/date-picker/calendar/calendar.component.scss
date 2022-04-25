@@ -1,0 +1,120 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  @include top-left;
+  @include box(100%);
+  position: fixed;
+  display: block;
+  z-index: 10;
+}
+
+.tk-flex {
+  @include flex(center);
+}
+
+.tk-flex-center {
+  @include flex(center, center);
+}
+
+// calendar cover
+.tk-calendar-cover {
+  @include top-left;
+  @include box(100%);
+  position: absolute;
+}
+
+// calendar container
+.tk-calendar-container {
+  position: absolute;
+  background-color: $white;
+  box-shadow: 0 3px 6px rgba($black, .16);
+  width: 330px;
+}
+
+// calendar header
+.tk-header {
+  @include flex(center, center, column);
+  height: 80px;
+
+  .tk-flex-center {
+    div {
+      margin: 0 10px;
+    }
+  }
+
+  .tk-flex-center + .tk-flex-center {
+    margin-top: 5px;
+  }
+
+  app-icon {
+    ::ng-deep {
+      path {
+        fill: #303030;
+      }
+    }
+  }
+}
+
+.tk-icon-button {
+  cursor: pointer;
+  user-select: none;
+}
+
+// year
+.tk-year {
+  font-size: 18px;
+}
+
+// column
+.tk-column {
+  @include flex(center, center);
+  width: calc(100% / 7);
+}
+
+// sunday and saturday
+.tk-day-of-week {
+  height: 30px;
+
+  &:first-child {
+    color: #FF4343;
+  }
+
+  &:last-child {
+    color: #49A9D9;
+  }
+}
+
+// date
+.tk-date {
+  height: 65px;
+  transition: background-color .15s;
+  cursor: pointer;
+  user-select: none;
+
+  &.tk-out-of-month {
+    color: #BEBEBE;
+  }
+
+  &:hover {
+    background-color: rgba($black, .3);
+  }
+
+  &.tk-current-date {
+    ::ng-deep {
+      app-ripple {
+        background-color: $white;
+      }
+    }
+
+    background-color: #49A9D9;
+    color: $white;
+  }
+
+  &.tk-disabled {
+    pointer-events: none;
+    background-color: rgba($black, .3);
+    color: #BEBEBE;
+  }
+}

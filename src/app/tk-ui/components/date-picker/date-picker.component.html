@@ -1,0 +1,23 @@
+<!-- date picker -->
+<div
+  #container
+  (click)="openCalendar()"
+  class="tk-date-picker">
+  <!-- input -->
+  <input
+    [value]="date | date: 'yyyy/MM/dd'"
+    appInput
+    readonly/>
+
+  <!-- icon -->
+  <app-icon name="calendar-today"></app-icon>
+</div>
+
+<!-- calendar -->
+<app-calendar
+  (dateChange)="onDateChange($event)"
+  *ngIf="opened"
+  [currentDate]="date"
+  [datePickerContainer]="container"
+  [maxDate]="maxDate"
+  [minDate]="minDate"></app-calendar>

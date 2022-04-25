@@ -1,0 +1,32 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  display: block;
+}
+
+// table row
+.tk-table-row {
+  display: flex;
+  align-items: stretch;
+}
+
+// table column
+.tk-table-column {
+  @include item-flex(1, 1, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// column sort icon
+.tk-table-column-sort {
+  margin-left: 10px;
+}
+
+// sort column
+.tk-sort-column {
+  cursor: pointer;
+  user-select: none;
+}

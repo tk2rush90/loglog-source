@@ -1,0 +1,26 @@
+{
+  "title": "How to prevent calling api twice when using Angular Universal?",
+  "description": "Usage example of TransferState",
+  "keywords": [
+    "Angular",
+    "Angular Universal",
+    "Http",
+    "SSR",
+    "Server Side Rendering",
+    "twice",
+    "api"
+  ],
+  "tags": [
+    "Angular2+",
+    "Javascript",
+    "Typescript",
+    "SSR"
+  ],
+  "banner": "/assets/images/posts/2/banner.png",
+  "thumbnail": "/assets/images/posts/2/thumbnail.png",
+  "bannerCredit": {
+    "name": "Gabriel Heinzer",
+    "id": "@6heinz3r"
+  },
+  "publish": "2022-02-20 00:00:00"
+}

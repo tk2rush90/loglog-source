@@ -1,0 +1,67 @@
+<div
+  (click)="onClickDate()"
+  class="tk-calendar-cover"></div>
+
+<!-- calendar container -->
+<div
+  #calendarContainer
+  [@fading]="fading"
+  [style.left]="left"
+  [style.top]="top"
+  class="tk-calendar-container">
+  <!-- header -->
+  <div class="tk-header">
+    <!-- year -->
+    <div class="tk-flex-center">
+      <div (click)="toPreviousYear()" class="tk-icon-button">
+        <app-icon name="chevron-left"></app-icon>
+      </div>
+
+      <div class="tk-year">
+        {{calendarDate | date: 'yyyy'}}
+      </div>
+
+      <div (click)="toNextYear()" class="tk-icon-button">
+        <app-icon name="chevron-right"></app-icon>
+      </div>
+    </div>
+
+    <!-- month -->
+    <div class="tk-flex-center">
+      <div (click)="toPreviousMonth()" class="tk-icon-button">
+        <app-icon name="chevron-left"></app-icon>
+      </div>
+
+      <div>
+        {{calendarDate | date: 'MMMM'}}
+      </div>
+
+      <div (click)="toNextMonth()" class="tk-icon-button">
+        <app-icon name="chevron-right"></app-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- day of weeks -->
+  <div class="tk-flex">
+    <div
+      *ngFor="let item of calendarDayOfWeeks"
+      class="tk-column tk-day-of-week">
+      {{item}}
+    </div>
+  </div>
+
+  <!-- dates -->
+  <div class="tk-flex">
+    <div
+      (click)="onClickDate(date)"
+      *ngFor="let date of calendarDates"
+      [class.tk-current-date]="isCurrentDate(date)"
+      [class.tk-disabled]="isOverDateRange(date)"
+      [class.tk-out-of-month]="date.year !== calendarYear || date.month !== calendarMonth"
+      appRipple
+      class="tk-column tk-date">
+      {{date.date}}
+    </div>
+  </div>
+</div>

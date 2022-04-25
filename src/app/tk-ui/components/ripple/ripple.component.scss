@@ -1,0 +1,11 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  position: absolute;
+  display: block;
+  background-color: $black;
+  border-radius: 50%;
+  pointer-events: none;
+}

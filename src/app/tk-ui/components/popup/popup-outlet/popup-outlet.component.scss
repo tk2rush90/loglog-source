@@ -1,0 +1,31 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  z-index: 200;
+  pointer-events: none;
+}
+
+// cover
+.tk-popup-cover {
+  @include top-left;
+  @include box(100%);
+  position: fixed;
+  pointer-events: all;
+}
+
+// popup container
+.tk-popup-content {
+  ::ng-deep {
+    * {
+      pointer-events: all;
+    }
+  }
+
+  @include top-left;
+  @include box(100%);
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+}

@@ -1,0 +1,29 @@
+<!-- cover -->
+<div
+  (click)="onOptionClicked()"
+  class="tk-options-cover"></div>
+
+<!-- options -->
+<div
+  #optionsContainer
+  [style.left]="left"
+  [style.top]="top"
+  [style.width]="width"
+  appAutoScrollContainer
+  class="tk-options-container">
+  <!-- render option item -->
+  <div
+    (click)="onOptionClicked(item)"
+    (mouseenter)="resetFocusedIndex()"
+    *ngFor="let item of options; let index = index"
+    [class.tk-focused]="index === focusedIndex"
+    [class.tk-selected]="item.value === value"
+    [focused]="item.value === value"
+    appAutoScrollItem
+    class="tk-option">
+    <!-- option label -->
+    <div class="tk-option-label">
+      {{item.label}}
+    </div>
+  </div>
+</div>

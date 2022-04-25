@@ -1,0 +1,33 @@
+<!-- container -->
+<div
+  #button
+  (click)="opened ? close() : open()"
+  class="tk-container">
+  <!-- input element -->
+  <input
+    #input
+    (keydown.arrowDown)="openWithInput(input)"
+    (keydown.arrowUp)="openWithInput(input)"
+    [class.ng-dirty]="dirty"
+    [class.ng-invalid]="invalid"
+    [class.ng-touched]="touched"
+    [placeholder]="placeholder"
+    [value]="label"
+    appInput
+    readonly/>
+
+  <!-- arrow down -->
+  <div class="tk-icon-container">
+    <app-icon
+      [class.tk-reverse]="opened"
+      name="keyboard-arrow-down"></app-icon>
+  </div>
+</div>
+
+<!-- options -->
+<app-select-options
+  (optionSelected)="onOptionChanged($event)"
+  *ngIf="opened"
+  [options]="options"
+  [selectContainer]="button"
+  [value]="value"></app-select-options>

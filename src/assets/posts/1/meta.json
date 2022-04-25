@@ -1,0 +1,22 @@
+{
+  "title": "타입스크립트(자바스크립트)로 달력 만들기",
+  "description": "달력 생성을 위한 타입스크립트(자바스크립트) 함수",
+  "keywords": [
+    "Javascript",
+    "Typescript",
+    "달력",
+    "자바스크립트",
+    "타입스크립트"
+  ],
+  "tags": [
+    "Javascript",
+    "Typescript"
+  ],
+  "banner": "/assets/images/posts/1/banner.png",
+  "thumbnail": "/assets/images/posts/1/thumbnail.png",
+  "bannerCredit": {
+    "name": "Kyrie kim",
+    "id": "@kyrie3"
+  },
+  "publish": "2022-02-13 00:00:00"
+}

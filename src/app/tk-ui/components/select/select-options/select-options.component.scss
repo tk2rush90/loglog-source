@@ -1,0 +1,58 @@
+@import "mixins";
+@import "props";
+
+$option-height: 40px;
+$option-container-height: calc(#{$option-height} * 5);
+
+// options container
+:host {
+  @include box(100%);
+  @include top-left;
+  position: fixed;
+  display: block;
+  z-index: 10;
+}
+
+// cover
+.tk-options-cover {
+  @include box(100%);
+  @include top-left;
+  position: absolute;
+}
+
+// options container
+.tk-options-container {
+  position: absolute;
+  background-color: $white;
+  max-height: $option-container-height;
+  overflow: auto;
+  box-shadow: 0 5px 15px rgba($black, .3);
+}
+
+// option item
+.tk-option {
+  @include padding(0 20px);
+  @include flex(center);
+  @include clickable();
+  height: $option-height;
+
+  &:hover, &.tk-focused {
+    background-color: darken($white, 10%);
+  }
+}
+
+// for selected option
+.tk-option {
+  &.tk-selected {
+    .tk-option-label {
+      color: #49A9D9;
+    }
+  }
+}
+
+// option label
+.tk-option-label {
+  @include ellipsis;
+  font-size: 14px;
+  width: 100%;
+}

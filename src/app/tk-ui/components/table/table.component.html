@@ -1,0 +1,64 @@
+<!-- table header row -->
+<div class="tk-table-row tk-table-header">
+  <!-- render columns -->
+  <ng-container *ngFor="let column of columns">
+    <!-- render column -->
+    <div
+      (click)="toggleSort(column)"
+      [class.tk-sort-column]="column.sort"
+      [style.max-width]="column.maxWidth"
+      class="tk-table-column">
+      <!-- contents -->
+      <div class="tk-table-column-content">
+        <!-- render custom column contents -->
+        <ng-container *ngIf="headerColumnMap[column.key]; else defaultHeaderColumn">
+          <ng-container
+            [ngTemplateOutletContext]="{$implicit: column.label}"
+            [ngTemplateOutlet]="headerColumnMap[column.key].templateRef"></ng-container>
+        </ng-container>
+
+        <!-- render default column contents -->
+        <ng-template #defaultHeaderColumn>
+          {{column.label}}
+        </ng-template>
+      </div>
+
+      <div
+        *ngIf="column.sort && sortMap[column.key]"
+        class="tk-table-column-sort">
+        <ng-container *ngIf="sortMap[column.key] === 'asc'">
+          <!-- up -->
+          <app-icon name="keyboard-arrow-up"></app-icon>
+        </ng-container>
+
+        <ng-container *ngIf="sortMap[column.key] === 'desc'">
+          <!-- down -->
+          <app-icon name="keyboard-arrow-down"></app-icon>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<!-- table body row -->
+<div
+  *ngFor="let item of data"
+  class="tk-table-row">
+  <ng-container *ngFor="let column of columns">
+    <div [style.max-width]="column.maxWidth" class="tk-table-column">
+      <div class="tk-table-column-content">
+        <!-- render custom column contents -->
+        <ng-container *ngIf="bodyColumnMap[column.key]; else defaultBodyColumn">
+          <ng-container
+            [ngTemplateOutletContext]="{$implicit: item}"
+            [ngTemplateOutlet]="bodyColumnMap[column.key].templateRef"></ng-container>
+        </ng-container>
+
+        <!-- render default column contents -->
+        <ng-template #defaultBodyColumn>
+          {{$any(item)[column.key]}}
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,36 @@
+@import "mixins";
+@import "props";
+
+// container
+:host {
+  display: block;
+}
+
+// date picker container
+.tk-date-picker {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  background-color: $white;
+}
+
+// input
+input {
+  width: 100%;
+  pointer-events: none;
+
+  &:read-only {
+    background-color: transparent;
+    color: #303030;
+  }
+}
+
+// calendar icon
+app-icon {
+  @include box(16px);
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -8px;
+}

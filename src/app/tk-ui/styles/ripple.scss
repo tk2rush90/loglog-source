@@ -1,0 +1,23 @@
+@import "mixins";
+@import "props";
+
+// ripple container
+.tk-ripple-container {
+  position: relative;
+
+  &.tk-ripple-bounded {
+    overflow: hidden;
+  }
+
+  &.tk-ripple-black {
+    app-ripple {
+      background-color: $black;
+    }
+  }
+
+  &.tk-ripple-white {
+    app-ripple {
+      background-color: $white;
+    }
+  }
+}

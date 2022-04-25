@@ -1,0 +1,16 @@
+@import "mixins";
+@import "props";
+
+:host {
+  @include flex(center, center);
+  @include box(100%);
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+
+  ::ng-deep {
+    > * {
+      pointer-events: auto;
+    }
+  }
+}

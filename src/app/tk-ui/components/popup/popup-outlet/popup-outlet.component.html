@@ -1,0 +1,11 @@
+<!-- cover -->
+<div
+  (click)="close()"
+  *ngIf="popupOpened"
+  class="tk-popup-cover"></div>
+
+<!-- popup container -->
+<div class="tk-popup-content">
+  <!-- container -->
+  <ng-container #container></ng-container>
+</div>
