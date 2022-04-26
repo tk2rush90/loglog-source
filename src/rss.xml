@@ -5,6 +5,13 @@
     <link>https://tk2blog90.github.io</link>
     <description>Welcome to the full-stack developer's personal space with GitHub pages</description>
     <item>
+      <title>Merge images with Javascript</title>
+      <link>https://tk2blog90.github.io/blog/post/6</link>
+      <description>Use canvas element to stack up images</description>
+      <pubDate>Tue, 26 Apr 2022 10:18:00 GMT</pubDate>
+      <guid>https://tk2blog90.github.io/blog/post/6</guid>
+    </item>
+    <item>
       <title>Build the blog on GitHub pages with Angular</title>
       <link>https://tk2blog90.github.io/blog/post/5</link>
       <description>SEO fully supported GitHub pages with Angular</description>

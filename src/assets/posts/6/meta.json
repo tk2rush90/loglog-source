@@ -1,0 +1,23 @@
+{
+  "title": "Merge images with Javascript",
+  "description": "Use canvas element to stack up images",
+  "keywords": [
+    "Javascript",
+    "Typescript",
+    "canvas",
+    "image",
+    "merge"
+  ],
+  "tags": [
+    "Javascript",
+    "Typescript",
+    "canvas"
+  ],
+  "banner": "/assets/images/posts/6/banner.png",
+  "thumbnail": "/assets/images/posts/6/thumbnail.png",
+  "bannerCredit": {
+    "name": "Johnny Magrippis",
+    "id": "@jmagrippis"
+  },
+  "publish": "2022-04-26 19:18:00"
+}

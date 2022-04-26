@@ -4,6 +4,7 @@
 /blog/search
 /blog/tags
 /error/404
+/blog/post/6
 /blog/post/5
 /blog/post/4
 /blog/post/3

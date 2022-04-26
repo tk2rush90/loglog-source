@@ -203,7 +203,7 @@ export class PostComponent implements OnInit, OnDestroy {
         description: contents
           .replace(/\n/gmi, ' ')
           .replace(/\s{2,}/gmi, ' ')
-          .substring(0, 300),
+          .substring(0, 300) + '...',
         thumbnail: this.post.thumbnail,
         keywords: this.post.keywords,
         created: this.post.created,

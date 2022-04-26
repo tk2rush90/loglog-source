@@ -46,7 +46,6 @@
 
 // banner
 .banner {
-  @include rect(100%, 350px);
   overflow: hidden;
   margin-top: 50px;
 
@@ -54,6 +53,18 @@
     @include box(100%);
     object-fit: cover;
     transition: opacity .3s;
+  }
+
+  @media screen and (min-width: 769px) {
+    @include rect(100%, 350px);
+  }
+
+  @media screen and (min-width: 426px) and (max-width: 768px) {
+    @include rect(100%, 300px);
+  }
+
+  @media screen and (max-width: 425px) {
+    @include rect(100%, 200px);
   }
 }
 
