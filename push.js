@@ -1,7 +1,11 @@
 const {exec} = require('child_process');
 const args = process.argv;
 const index = args.indexOf('--message');
-const commitMessage = args[index + 1];
+let commitMessage;
+
+if (index !== -1) {
+  commitMessage = args[index + 1];
+}
 
 /**
  * Run command asynchronously.
