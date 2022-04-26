@@ -12,6 +12,7 @@
   <!-- router container -->
   <div class="container">
     <!-- router outlet -->
-    <router-outlet></router-outlet>
+    <router-outlet
+      (activate)="onRouteActivate($event)"></router-outlet>
   </div>
 </main>

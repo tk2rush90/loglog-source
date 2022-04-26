@@ -1,18 +1,24 @@
 <!-- metadata -->
 <div class="meta container">
   <!-- date -->
-  <div class="grey-text">
-    {{post?.created | date: 'dd MMMM, yyyy'}}
+  <div class="grey-text date">
+    <span
+      *ngIf="post?.created"
+      [@fade-in]="fadeIn">{{post?.created | date: 'dd MMMM, yyyy'}}</span>
   </div>
 
   <!-- title -->
   <h1 class="title">
-    {{post?.title}}
+    <span
+      *ngIf="post?.title"
+      [@fade-in]="fadeIn">{{post?.title}}</span>
   </h1>
 
   <!-- description -->
   <div class="grey-text description">
-    {{post?.description}}
+    <span
+      *ngIf="post?.description"
+      [@fade-in]="fadeIn">{{post?.description}}</span>
   </div>
 </div>
 
@@ -21,14 +27,17 @@
   <img
     *ngIf="post?.banner"
     [src]="post?.banner"
-    [alt]="post?.title"/>
+    [alt]="post?.title"
+    loading="lazy"
+    appLazyImage/>
 </div>
 
 <!-- banner credit for unsplash -->
-<div
-  *ngIf="post?.bannerCredit"
-  class="credit">
-  <div class="grey-text">
+<div class="credit">
+  <div
+    *ngIf="post?.bannerCredit"
+    [@fade-in]="fadeIn"
+    class="grey-text">
     Photo by
     <a
       [href]="creditLink"
@@ -82,21 +91,64 @@
 
   <!-- article -->
   <article class="container">
-    <!-- table of contents -->
-    <app-table-of-contents
-      (linkClick)="scrollToFragment($event)"
-      *ngIf="post?.contents"
-      [target]="target.element.nativeElement"></app-table-of-contents>
+    <div
+      *ngIf="post"
+      [@fade-in]="fadeIn">
+      <!-- table of contents -->
+      <app-table-of-contents
+        (linkClick)="scrollToFragment($event)"
+        *ngIf="post?.contents"
+        [target]="target.element.nativeElement"></app-table-of-contents>
 
-    <!-- show markdown -->
-    <markdown
-      #target
-      [data]="post?.contents"></markdown>
+      <!-- show markdown -->
+      <markdown
+        #target
+        [data]="post?.contents"></markdown>
 
-    <!-- tag list -->
-    <app-tag-list
-      [tags]="post?.tags || []"></app-tag-list>
+      <!-- tag list -->
+      <app-tag-list
+        [tags]="post?.tags || []"></app-tag-list>
+    </div>
   </article>
+
+  <!-- actions right -->
+  <div class="actions">
+    <!-- github -->
+    <a
+      href="https://github.com/tk2rush90"
+      class="action"
+      appOuterLink>
+      <app-icon
+        class="grey-icon"
+        name="github:black-30"></app-icon>
+
+      <span class="grey-text">github</span>
+    </a>
+
+    <!-- topcoder -->
+    <a
+      href="https://www.topcoder.com/members/tk2rush90"
+      class="action"
+      appOuterLink>
+      <app-icon
+        class="grey-icon"
+        name="topcoder:black-30"></app-icon>
+
+      <span class="grey-text">topcoder</span>
+    </a>
+
+    <!-- discord -->
+    <a
+      href="https://discord.gg/NeRgr2j9zA"
+      class="action"
+      appOuterLink>
+      <app-icon
+        class="grey-icon"
+        name="discord:black-30"></app-icon>
+
+      <span class="grey-text">discord</span>
+    </a>
+  </div>
 </div>
 
 <!-- copyrights -->

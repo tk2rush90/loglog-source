@@ -20,12 +20,13 @@ import {IconModule} from '@tk-ui/components/icon/icon.module';
 import {DraftComponent} from './draft/draft.component';
 import {LoadingSpinnerModule} from '@tk-ui/components/loading-spinner/loading-spinner.module';
 import {PlainMarkdownModule} from '@tk2blog90/services/plain-markdown/plain-markdown.module';
+import {LazyImageModule} from '@tk2blog90/components/lazy-image/lazy-image.module';
 
 const renderer = new MarkedRenderer();
 
 renderer.link = (href, title, text) => {
   return `<a href="${href}" target="_blank" rel="nofollow noreferrer noopener">${text}</a>`
-};
+}
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ renderer.link = (href, title, text) => {
     IconModule,
     LoadingSpinnerModule,
     PlainMarkdownModule,
+    LazyImageModule,
   ],
 })
 export class BlogModule { }

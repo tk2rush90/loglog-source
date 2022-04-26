@@ -3,5 +3,6 @@ Allow: /
 Disallow: /assets/posts
 Disallow: /blog/draft
 Disallow: /404
+Disallow: /error/404
 
 Sitemap: https://tk2blog90.github.io/sitemap.xml

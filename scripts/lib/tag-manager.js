@@ -3,7 +3,7 @@ const path = require('path');
 const {fileOptions} = require('./fs-utils');
 const {dataDirectoryPath, lookupsDirectory} = require('./path-utils');
 
-const tagJsonFile = 'tags';
+const tagJsonFile = 'tags.json';
 
 /**
  * Create tags by extracting unique tags from the posts.

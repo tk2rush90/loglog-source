@@ -1,0 +1,28 @@
+{
+  "title": "Build the blog on GitHub pages with Angular",
+  "description": "SEO fully supported GitHub pages with Angular",
+  "keywords": [
+    "Angular",
+    "Angular Universal",
+    "nguniversal",
+    "SEO",
+    "prerender",
+    "GitHub",
+    "GitHub pages",
+    "Blog"
+  ],
+  "tags": [
+    "Javascript",
+    "Typescript",
+    "Angular2+",
+    "SSR",
+    "GitHub"
+  ],
+  "banner": "/assets/images/posts/5/banner.png",
+  "thumbnail": "/assets/images/posts/5/thumbnail.png",
+  "bannerCredit": {
+    "name": "Richy Great",
+    "id": "@richygreat"
+  },
+  "publish": "2022-04-26 00:04:00"
+}

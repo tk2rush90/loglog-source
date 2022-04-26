@@ -1,4 +1,6 @@
 export const commonEnvironments = {
+  dataApi: '/assets/data',
+  localDataApi: 'http://localhost:4200/assets/data',
   repository: 'tk2blog90.github.io',
   organization: 'tk2blog90',
   owner: 'tk2rush90',

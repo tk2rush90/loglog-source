@@ -12,6 +12,7 @@ import {environment} from '../../../../../environments/environment';
 import {fadeIn, fadeInName, fadeInState} from '@tk2blog90/animations/fade-in';
 import {PlatformService} from '@tk-ui/services/universal/platform.service';
 import {PlainMarkdownService} from '@tk2blog90/services/plain-markdown/plain-markdown.service';
+import {makeStateKey, TransferState} from '@angular/platform-browser';
 
 const {
   href,
@@ -45,18 +46,19 @@ export class PostComponent implements OnInit, OnDestroy {
   @HostBinding(`@${fadeInName}`) fadeIn = fadeInState.show;
 
   /**
-   * Post detail.
-   */
-  post?: PostDetail;
-
-  /**
    * Post id.
    */
   protected _id: string | null = null;
 
+  /**
+   * Post key for transfer state.
+   */
+  private _stateKey = makeStateKey('63cfe5c3-0318-4826-bc42-d81e1ea7eea1');
+
   constructor(
     @Inject(DOCUMENT) protected document: Document,
     @Inject(Location) protected location: Location,
+    protected transferState: TransferState,
     protected router: Router,
     protected activatedRoute: ActivatedRoute,
     protected changeDetectorRef: ChangeDetectorRef,
@@ -73,6 +75,24 @@ export class PostComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.platformService.isBrowser) {
+      this.post = undefined;
+    }
+  }
+
+  /**
+   * Set post to transfer state.
+   * @param post Post.
+   */
+  set post(post: PostDetail | undefined) {
+    this.transferState.set<PostDetail | undefined>(this._stateKey, post);
+  }
+
+  /**
+   * Get post from transfer state.
+   */
+  get post(): PostDetail | undefined {
+    return this.transferState.get<PostDetail | undefined>(this._stateKey, undefined);
   }
 
   /**
@@ -118,8 +138,8 @@ export class PostComponent implements OnInit, OnDestroy {
           const domRect = heading.getBoundingClientRect();
 
           // To show heading text correctly,
-          // reduce the height of heading and height of application header height.
-          scrollableContainer.scrollTo(0, scrollableContainer.scrollTop + domRect.top - domRect.height - 70);
+          // reduce the application header height.
+          scrollableContainer.scrollTo(0, scrollableContainer.scrollTop + domRect.top - 70);
         } else {
           scrollableContainer.scrollTo(0, 0);
         }
@@ -148,7 +168,7 @@ export class PostComponent implements OnInit, OnDestroy {
    * Get post detail from the data api.
    */
   protected _getPostDetail(): void {
-    if (this._id) {
+    if (this._id && !this.post) {
       const sub = this.dataApiService
         .getPostDetail(this._id)
         .subscribe({
@@ -159,7 +179,7 @@ export class PostComponent implements OnInit, OnDestroy {
             this._updateSEOProperties();
           },
           error: () => {
-            this.router.navigate(['/404']);
+            this.router.navigate(['/error/404']);
           },
         });
 

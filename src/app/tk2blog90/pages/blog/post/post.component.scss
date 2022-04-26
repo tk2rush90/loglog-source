@@ -18,6 +18,18 @@
 .meta {
   @include flex(center, null, column);
   text-align: center;
+
+  .date {
+    min-height: 18px;
+  }
+
+  .title {
+    min-height: 26px;
+  }
+
+  .description {
+    min-height: 18px;
+  }
 }
 
 // title
@@ -41,6 +53,7 @@
   img {
     @include box(100%);
     object-fit: cover;
+    transition: opacity .3s;
   }
 }
 
@@ -64,11 +77,11 @@
     margin: 0;
   }
 
-  @media screen and (min-width: 841px) {
+  @media screen and (min-width: 1041px) {
     @include flex(flex-start);
   }
 
-  @media screen and (max-width: 840px) {
+  @media screen and (max-width: 1040px) {
     @include flex(center, null, column-reverse);
   }
 }
@@ -79,14 +92,16 @@
   position: sticky;
   top: 70px;
 
-  @media screen and (min-width: 841px) {
+  @media screen and (min-width: 1041px) {
     @include flex(center, null, column);
     width: 200px;
   }
 
-  @media screen and (max-width: 840px) {
+  @media screen and (max-width: 1040px) {
     @include flex(center, center);
     width: 100%;
+    position: relative;
+    top: 0;
   }
 }
 
@@ -102,7 +117,7 @@
   span {
     margin-top: 5px;
 
-    @media screen and (max-width: 840px) {
+    @media screen and (max-width: 1040px) {
       display: none;
     }
   }
@@ -110,11 +125,11 @@
 
 // action + action
 .action + .action {
-  @media screen and (min-width: 841px) {
+  @media screen and (min-width: 1041px) {
     margin-top: 20px;
   }
 
-  @media screen and (max-width: 840px) {
+  @media screen and (max-width: 1040px) {
     margin-left: 20px;
   }
 }

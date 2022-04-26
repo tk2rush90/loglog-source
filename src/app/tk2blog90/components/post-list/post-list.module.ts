@@ -5,6 +5,7 @@ import {PostItemComponent} from '@tk2blog90/components/post-list/post-item/post-
 import {RouterModule} from '@angular/router';
 import {IconModule} from '@tk-ui/components/icon/icon.module';
 import {LoadingSpinnerModule} from '@tk-ui/components/loading-spinner/loading-spinner.module';
+import {LazyImageModule} from '@tk2blog90/components/lazy-image/lazy-image.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {LoadingSpinnerModule} from '@tk-ui/components/loading-spinner/loading-sp
     CommonModule,
     RouterModule,
     IconModule,
-    LoadingSpinnerModule
+    LoadingSpinnerModule,
+    LazyImageModule
   ]
 })
 export class PostListModule { }

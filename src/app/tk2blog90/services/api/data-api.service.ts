@@ -8,9 +8,11 @@ import {PostDetail} from '@tk2blog90/models/post-detail';
 import {HttpClient} from '@angular/common/http';
 import {SortUtil} from '@tk-ui/utils/sort.util';
 import {PostMeta} from '@tk2blog90/models/post-meta';
+import {PlatformService} from '@tk-ui/services/universal/platform.service';
 
 const {
   dataApi,
+  localDataApi,
 } = environment;
 
 @Injectable({
@@ -20,8 +22,9 @@ export class DataApiService extends ApiBaseService {
 
   constructor(
     private http: HttpClient,
+    private platformService: PlatformService,
   ) {
-    super('', dataApi);
+    super('', platformService.isBrowser ? dataApi : localDataApi);
   }
 
   /**
@@ -29,7 +32,7 @@ export class DataApiService extends ApiBaseService {
    * @param page Page number.
    */
   getPostList(page = 0): Observable<PagingResponse<PostItem>> {
-    return this.http.get<PagingResponse<PostItem>>(this.endpoint(`/list/${page}`));
+    return this.http.get<PagingResponse<PostItem>>(this.endpoint(`/list/${page}.json`));
   }
 
   /**
@@ -37,7 +40,7 @@ export class DataApiService extends ApiBaseService {
    * @param id Post id.
    */
   getPostDetail(id: string): Observable<PostDetail> {
-    return this.http.get<PostDetail>(this.endpoint(`/post/${id}`));
+    return this.http.get<PostDetail>(this.endpoint(`/post/${id}.json`));
   }
 
   /**
@@ -65,7 +68,7 @@ export class DataApiService extends ApiBaseService {
    * @param search Search text.
    */
   getPostsBySearch(search: string): Observable<PostItem[]> {
-    return this.http.get<PostItem[]>(this.endpoint('/lookups/posts'))
+    return this.http.get<PostItem[]>(this.endpoint('/lookups/posts.json'))
       .pipe(map(res => {
         // Return filtered data when `search` value is available.
         if (search) {
@@ -81,7 +84,7 @@ export class DataApiService extends ApiBaseService {
    * @param tags Selected tags.
    */
   getPostsByTags(tags: string[]): Observable<PostItem[]> {
-    return this.http.get<PostItem[]>(this.endpoint('/lookups/posts'))
+    return this.http.get<PostItem[]>(this.endpoint('/lookups/posts.json'))
       .pipe(map(res => {
         // Return filtered data when there are some selected tags.
         if (tags.length > 0) {
@@ -107,7 +110,7 @@ export class DataApiService extends ApiBaseService {
    * Get all available tags.
    */
   getTagList(): Observable<string[]> {
-    return this.http.get<string[]>(this.endpoint('/lookups/tags'))
+    return this.http.get<string[]>(this.endpoint('/lookups/tags.json'))
       .pipe(map(res => {
         // Order by tag name asc.
         const sortFunction = SortUtil.sortMethodWithOrder<string>('asc');

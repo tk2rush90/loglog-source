@@ -1,5 +1,6 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Renderer2} from '@angular/core';
 import {AppTheme, ThemeService} from '@tk2blog90/services/app/theme.service';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ export class AppComponent implements OnInit {
   private _theme: AppTheme = 'light';
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2,
     private themeService: ThemeService,
   ) {
     this.themeService.init();
@@ -24,20 +27,6 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Bind light theme class.
-   */
-  @HostBinding('class.theme-light') get light(): boolean {
-    return this._theme === 'light';
-  }
-
-  /**
-   * Bind dark theme class.
-   */
-  @HostBinding('class.theme-dark') get dark(): boolean {
-    return this._theme === 'dark';
-  }
-
-  /**
    * Subscribe theme value to change the theme of the application.
    */
   private _subscribeTheme(): void {
@@ -45,6 +34,20 @@ export class AppComponent implements OnInit {
       .theme$
       .subscribe(theme => {
         this._theme = theme;
+
+        switch (this._theme) {
+          case 'light': {
+            this.renderer.addClass(this.document.body, 'theme-light');
+            this.renderer.removeClass(this.document.body, 'theme-dark');
+            break;
+          }
+
+          case 'dark': {
+            this.renderer.addClass(this.document.body, 'theme-dark');
+            this.renderer.removeClass(this.document.body, 'theme-light');
+            break;
+          }
+        }
       });
   }
 }

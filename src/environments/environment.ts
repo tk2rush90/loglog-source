@@ -6,7 +6,6 @@ import {commonEnvironments} from './environment.common';
 
 export const environment = {
   production: false,
-  dataApi: '/assets/data',
   /**
    * Default href of application
    */

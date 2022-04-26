@@ -17,7 +17,7 @@ function createRoutes(posts) {
     '/blog/list',
     '/blog/search',
     '/blog/tags',
-    '/404',
+    '/error/404',
   ];
 
   posts.forEach(post => {

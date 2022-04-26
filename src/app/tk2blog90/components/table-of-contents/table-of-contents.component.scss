@@ -31,9 +31,18 @@
   }
 }
 
+// title for table of contents
+.title {
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+}
+
+// link
 a {
   display: block;
   font-size: 14px;
+  margin-top: 10px;
 
   &:hover {
     text-decoration: underline;
@@ -44,9 +53,4 @@ a {
       @include padding-left(#{($i - 1) * 10}px);
     }
   }
-}
-
-// heading + heading
-a + a {
-  margin-top: 10px;
 }

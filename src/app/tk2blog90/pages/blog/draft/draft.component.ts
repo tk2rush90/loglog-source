@@ -8,6 +8,7 @@ import {DataApiService} from '@tk2blog90/services/api/data-api.service';
 import {SubscriptionService} from '@tk-ui/services/common/subscription.service';
 import {PlatformService} from '@tk-ui/services/universal/platform.service';
 import {PlainMarkdownService} from '@tk2blog90/services/plain-markdown/plain-markdown.service';
+import {TransferState} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-draft',
@@ -22,6 +23,7 @@ export class DraftComponent extends PostComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) protected override document: Document,
     @Inject(Location) protected override location: Location,
+    protected override transferState: TransferState,
     protected override router: Router,
     protected override activatedRoute: ActivatedRoute,
     protected override changeDetectorRef: ChangeDetectorRef,
@@ -35,6 +37,7 @@ export class DraftComponent extends PostComponent implements OnInit {
     super(
       document,
       location,
+      transferState,
       router,
       activatedRoute,
       changeDetectorRef,

@@ -8,16 +8,6 @@
   display: block;
   font-family: 'Montserrat', 'Gothic A1', sans-serif;
   font-size: 14px;
-
-  &.theme-light {
-    background-color: $white;
-    color: $night-rider;
-  }
-
-  &.theme-dark {
-    background-color: $night-rider;
-    color: $white;
-  }
 }
 
 :host {

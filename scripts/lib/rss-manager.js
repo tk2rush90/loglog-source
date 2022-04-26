@@ -28,7 +28,7 @@ function createRss(posts) {
           _text: 'LOGLOG',
         },
         link: {
-          _text: 'https://tk2rush90.github.io',
+          _text: 'https://tk2blog90.github.io',
         },
         description: {
           _text: `Welcome to the full-stack developer's personal space with GitHub pages`,
@@ -63,6 +63,7 @@ function createRss(posts) {
 
   const xml = xmlJs.js2xml(rss, {
     compact: true,
+    spaces: 2,
   });
 
   fs.writeFileSync(path.join(sourceDirectoryPath, rssFile), xml, fileOptions);

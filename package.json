@@ -33,6 +33,7 @@
     "express": "^4.15.2",
     "lodash": "^4.17.21",
     "ngx-markdown": "^13.1.0",
+    "node-html-parser": "^5.3.3",
     "octokit": "^1.7.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

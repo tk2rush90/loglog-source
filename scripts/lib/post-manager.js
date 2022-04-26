@@ -5,7 +5,7 @@ const {postDirectoryPath, dataDirectoryPath, postDirectory, listDirectory, looku
 
 const metaJsonFile = 'meta.json';
 const postMarkdownFile = 'index.md';
-const postsJsonFile = 'posts';
+const postsJsonFile = 'posts.json';
 
 /**
  * Page size.
@@ -52,7 +52,7 @@ function getPosts() {
  */
 function createPosts(posts) {
   posts.forEach(post => {
-    fs.writeFileSync(path.join(dataDirectoryPath, postDirectory, `${post.id}`), JSON.stringify(post), fileOptions);
+    fs.writeFileSync(path.join(dataDirectoryPath, postDirectory, `${post.id}.json`), JSON.stringify(post), fileOptions);
   });
 }
 
@@ -86,7 +86,7 @@ function createPagination(posts) {
       hasNext,
     };
 
-    fs.writeFileSync(path.join(dataDirectoryPath, listDirectory, `${page}`), JSON.stringify(pageData), fileOptions);
+    fs.writeFileSync(path.join(dataDirectoryPath, listDirectory, `${page}.json`), JSON.stringify(pageData), fileOptions);
 
     page++;
   }

@@ -15,6 +15,18 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+body {
+  &.theme-light {
+    background-color: $white;
+    color: $night-rider;
+  }
+
+  &.theme-dark {
+    background-color: $night-rider;
+    color: $white;
+  }
+}
+
 img {
   display: block;
 }

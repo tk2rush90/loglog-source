@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, Input, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostBinding, Input, OnInit} from '@angular/core';
 import {IconDefinitions} from '@tk-ui/components/icon/icon-defs';
-import {PlatformService} from '@tk-ui/services/universal/platform.service';
 
 @Component({
   selector: 'app-icon',
@@ -30,13 +29,11 @@ export class IconComponent implements OnInit, AfterViewInit {
   private _name: keyof typeof IconDefinitions | undefined;
 
   /**
-   * svg element from `icon-defs.ts`
+   * svg string from `icon-defs.ts`
    */
-  private _icon: SVGElement | undefined;
+  private _icon?: string;
 
   constructor(
-    private platformService: PlatformService,
-    private renderer: Renderer2,
     private elementRef: ElementRef<HTMLElement>,
   ) { }
 
@@ -51,20 +48,8 @@ export class IconComponent implements OnInit, AfterViewInit {
    * set icon with name
    */
   private _setIcon(): void {
-    if (this.platformService.isBrowser) {
-      this._removeExistingIcon();
-      this._parseSvgIcon();
-      this._appendSvgToView();
-    }
-  }
-
-  /**
-   * remove existing icon from element
-   */
-  private _removeExistingIcon(): void {
-    if (this._icon && this.elementRef?.nativeElement) {
-      this.renderer.removeChild(this.elementRef.nativeElement, this._icon);
-    }
+    this._parseSvgIcon();
+    this._appendSvgToView();
   }
 
   /**
@@ -72,10 +57,7 @@ export class IconComponent implements OnInit, AfterViewInit {
    */
   private _parseSvgIcon(): void {
     if (this._name) {
-      const domParser = new DOMParser();
-      const html = domParser.parseFromString(IconDefinitions[this._name], 'text/html');
-
-      this._icon = html.querySelector('svg') as SVGElement;
+      this._icon = IconDefinitions[this._name];
     }
   }
 
@@ -84,7 +66,7 @@ export class IconComponent implements OnInit, AfterViewInit {
    */
   private _appendSvgToView(): void {
     if (this._icon && this.elementRef?.nativeElement) {
-      this.renderer.appendChild(this.elementRef.nativeElement, this._icon);
+      this.elementRef.nativeElement.innerHTML = this._icon;
     }
   }
 }

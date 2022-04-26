@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const xmlJs = require('xml-js');
+const DateUtil = require('./date-util');
 const {fileOptions} = require('./fs-utils');
 const {sourceDirectoryPath} = require('./path-utils');
 
@@ -33,7 +34,7 @@ function createSiteMap(posts) {
             _text: 'https://tk2blog90.github.io/',
           },
           lastmod: {
-            _text: new Date().toUTCString(),
+            _text: DateUtil.formatDate(new Date()),
           },
           changefreq: {
             _text: 'weekly',
@@ -48,7 +49,7 @@ function createSiteMap(posts) {
             _text: 'https://tk2blog90.github.io/blog/list',
           },
           lastmod: {
-            _text: new Date().toUTCString(),
+            _text: DateUtil.formatDate(new Date()),
           },
           changefreq: {
             _text: 'daily',
@@ -63,7 +64,7 @@ function createSiteMap(posts) {
             _text: 'https://tk2blog90.github.io/blog/search',
           },
           lastmod: {
-            _text: new Date().toUTCString(),
+            _text: DateUtil.formatDate(new Date()),
           },
           changefreq: {
             _text: 'daily',
@@ -78,7 +79,7 @@ function createSiteMap(posts) {
             _text: 'https://tk2blog90.github.io/blog/tags',
           },
           lastmod: {
-            _text: new Date().toUTCString(),
+            _text: DateUtil.formatDate(new Date()),
           },
           changefreq: {
             _text: 'daily',
@@ -98,7 +99,7 @@ function createSiteMap(posts) {
         _text: `https://tk2blog90.github.io/blog/post/${post.id}`
       },
       lastmod: {
-        _text: new Date().toUTCString(),
+        _text: DateUtil.formatDate(new Date(post.created)),
       },
       changefreq: {
         _text: 'daily',
@@ -111,6 +112,7 @@ function createSiteMap(posts) {
 
   const xml = xmlJs.js2xml(sitemap, {
     compact: true,
+    spaces: 2,
   });
 
   fs.writeFileSync(path.join(sourceDirectoryPath, siteMapFile), xml, fileOptions);

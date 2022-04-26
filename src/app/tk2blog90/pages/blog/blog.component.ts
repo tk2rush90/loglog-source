@@ -2,6 +2,7 @@ import {Component, ElementRef, HostListener, Inject, OnInit} from '@angular/core
 import {NavigationEnd, Router} from '@angular/router';
 import {SubscriptionService} from '@tk-ui/services/common/subscription.service';
 import {Location} from '@angular/common';
+import {ListComponent} from '@tk2blog90/pages/blog/list/list.component';
 
 @Component({
   selector: 'app-blog',
@@ -16,6 +17,11 @@ export class BlogComponent implements OnInit {
    * Content scrolled state.
    */
   scrolled = false;
+
+  /**
+   * Current route page.
+   */
+  route: ListComponent | any;
 
   /**
    * Current pathname.
@@ -42,11 +48,39 @@ export class BlogComponent implements OnInit {
   }
 
   /**
-   * Detect scroll event of host element to set header class.
+   * Detect scroll event of host element.
    */
   @HostListener('scroll')
   onHostScroll(): void {
+    this._checkScrolledState();
+    this._checkScrollEnd();
+  }
+
+  /**
+   * Listen route activate event to get current routing component.
+   * @param component Current routing component.
+   */
+  onRouteActivate(component: ListComponent | any): void {
+    this.route = component;
+  }
+
+  /**
+   * Check the host element scroll position to add scrolled class to header.
+   */
+  private _checkScrolledState(): void {
     this.scrolled = this.element.scrollTop > 150;
+  }
+
+  /**
+   * Check whether the host element meets end of scroll or not
+   * to get next page of post list.
+   */
+  private _checkScrollEnd(): void {
+    if (this.element.scrollTop === this.element.scrollHeight - this.element.offsetHeight) {
+      if (this.route instanceof ListComponent) {
+        this.route.getNextPage();
+      }
+    }
   }
 
   /**

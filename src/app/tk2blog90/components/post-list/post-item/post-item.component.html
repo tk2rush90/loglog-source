@@ -10,7 +10,9 @@
     <img
       *ngIf="post.thumbnail"
       [src]="post.thumbnail"
-      [alt]="post.title"/>
+      [alt]="post.title"
+      loading="lazy"
+      appLazyImage/>
   </div>
 
   <!-- title -->
