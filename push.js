@@ -1,5 +1,7 @@
 const {exec} = require('child_process');
 const args = process.argv;
+const index = args.indexOf('--message');
+const commitMessage = args[index + 1];
 
 /**
  * Run command asynchronously.
@@ -13,16 +15,16 @@ function runCommand(command) {
     const process = exec(command);
 
     process.on('error', (code, signal) => {
-      console.log(`command error: "${command}"`, code, signal);
+      console.log(`command error:`, code, signal);
       reject();
     });
 
     process.on('message', (message, sendHandler) => {
-      console.log(`command message: "${command}"`, message, sendHandler);
+      console.log(`command message:`, message, sendHandler);
     });
 
     process.on('exit', (code, signal) => {
-      console.log(`command exit: "${command}"`, code, signal);
+      console.log(`command exit:`, code, signal);
       resolve();
     });
   });
@@ -37,7 +39,7 @@ async function run() {
   await runCommand(`cd ${__dirname} && git add .`);
 
   // Commit changes.
-  await runCommand(`cd ${__dirname} && git commit -m "${args[1] || new Date().toISOString()}"`);
+  await runCommand(`cd ${__dirname} && git commit -m "${commitMessage || new Date().toISOString()}"`);
 
   // Push.
   await runCommand(`cd ${__dirname} && git push origin master`);
